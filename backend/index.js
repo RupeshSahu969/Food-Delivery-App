@@ -17,12 +17,14 @@ app.use((req,res,next) =>{
 
 mongoDB();
 
+
+app.use(express.json())
+app.use("/api",require("./Routes/CreateUser"))
+app.use("/api",require("./Routes/DisplayData"))
+
 app.get("/", (req, res) => {
   res.send("hello world");
 });
-app.use(express.json())
-app.use("/api",require("./Routes/CreateUser"))
-
 app.listen(port, () => {
   console.log(`Connection sucessfully  ${port}`);
 });
