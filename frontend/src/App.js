@@ -11,12 +11,15 @@ import Login from "./Screens/Login";
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle"
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
 import Signup from "./Screens/Signup";
+import Navbar from "./Components/Navbar";
 
 
 function App() {
   return (
     <>
+   
       <Router>
+      {/* <Navbar/> */}
         <Routes>
         <Route path="/"  element={<Home/>} />
         <Route path="/login"  element={<Login/>} />

@@ -13,9 +13,9 @@ const Login = () => {
     e.preventDefault();
     console.log(JSON.stringify({ email: credentials.email, password: credentials.password }))
     const response = await fetch("http://localhost:5000/api/loginuser", {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+          'Content-Type': "application/json"
       },
       body: JSON.stringify({
         email: credentials.email,
@@ -23,16 +23,17 @@ const Login = () => {
 
       })
     })
-    const res = await response.json()
-    console.log(res)
-    // if (!res.success) {
-    //   alert("Enter Valid Credenitals")
-    // }
-
-
-    navigate("/")
-
-
+   
+     const json = await response.json()
+    console.log(json)
+    if (json.success) {
+      alert("Enter Valid Credenitals")
+    }
+    if (!json.success) {
+      localStorage.setItem("authToken",json.authToken)
+        console.log(localStorage.getItem("authToken"))
+        navigate("/")
+   }
 
   }
 
