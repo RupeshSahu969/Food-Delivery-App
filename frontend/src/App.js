@@ -9,6 +9,7 @@ import Signup from "./Screens/Signup";
 import Navbar from "./Components/Navbar";
 import { CartProvider } from "./Components/ContextReducer";
 import Cart from "./Screens/Cart";
+import MyOrder from "./Screens/MyOrder";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/signup" element={<Signup />} />
             <Route exact path="/cart" element={<Cart />} />
-            {/* <Route exact path="/myorder" element={<MyOrder />} /> */}
+            <Route exact path="/myorder" element={<MyOrder />} />
           </Routes>
         </div>
       </Router>
