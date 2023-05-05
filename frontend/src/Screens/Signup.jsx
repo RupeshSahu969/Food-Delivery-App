@@ -19,7 +19,7 @@ const Signup = () => {
             geolocation
         }
         console.log(payload)
-        fetch("http://localhost:5000/api/createuser", {
+        fetch("https://foodfront.onrender.com/api/createuser", {
             method: "POST",
             headers: {
                 'Content-Type': "application/json"
@@ -57,7 +57,7 @@ const Signup = () => {
                         <div className="m-3">
                             <label htmlFor="address" className="form-label">Address</label>
                             <fieldset>
-                                <input type="email" className="form-control" name='email' placeholder='Enter Address' value={geolocation} onChange={(e) => setgeolocation(e.target.value)} aria-describedby="emailHelp"  />
+                                <input type="text" className="form-control" name='email' placeholder='Enter Address' value={geolocation} onChange={(e) => setgeolocation(e.target.value)} aria-describedby="emailHelp"  />
                             </fieldset>
                         </div>
                         

@@ -26,6 +26,7 @@ const Card = (props) => {
             qty: qty,
             size: size
         })
+        return
         // console.log(data)
 
     }
@@ -44,7 +45,6 @@ const Card = (props) => {
 
                     <div className='container w-100'>
                         <select className='m-2 h-100  bg-success rounded' 
-                        onClick={handleClick}
                         onChange={(e) => setQty(e.target.value)}>
                             {Array.from(Array(6), (e, i) => {
                                 return (
