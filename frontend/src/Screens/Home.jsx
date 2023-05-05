@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
 import Card from '../Components/Card'
-import Carousal from '../Components/Carousal'
+
 
 const Home = () => {
 
@@ -21,7 +21,7 @@ const Home = () => {
     })
     response = await response.json();
 
-    // console.log(response[0], response[1])
+    
     setfoodItem(response[0])
     setFoodCat(response[1])
 
@@ -45,17 +45,17 @@ const Home = () => {
                   value={search}
                   onChange={(e) => { setSearch(e.target.value) }}
                 />
-                {/* <button class="btn btn-outline-success text-white bg-success" type="submit">Search</button> */}
+              <button className="btn text-white bg-danger" onClick={() => { setSearch('') }}>X</button>
               </div>
             </div>
             <div className="carousel-item active">
-              <img src="https://awik.io/wp-content/uploads/2020/08/media-queries-js.jpg" className="d-block w-100" style={{ filter: "brightness(30%)" }} alt="..." />
+              <img src="https://source.unsplash.com/random/900x700/?burger" className="d-block w-100" style={{ filter: "brightness(30%)" }} alt="..." />
             </div>
             <div className="carousel-item">
-              <img src="https://awik.io/wp-content/uploads/2020/08/media-queries-js.jpg" className="d-block w-100" style={{ filter: "brightness(30%)" }} alt="..." />
+              <img src="https://source.unsplash.com/random/900x700/?pastry" className="d-block w-100" style={{ filter: "brightness(30%)" }} alt="..." />
             </div>
             <div className="carousel-item">
-              <img src="https://awik.io/wp-content/uploads/2020/08/media-queries-js.jpg" className="d-block w-100" style={{ filter: "brightness(30%)" }} alt="..." />
+              <img src="https://source.unsplash.com/random/900x700/?barbeque" className="d-block w-100" style={{ filter: "brightness(30%)" }} alt="..." />
             </div>
           </div>
           <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -86,10 +86,9 @@ const Home = () => {
                     return (
                       <div key={filterItem._id} className='col-12 col-md-6 col-lg-3'>
                         <Card
-                          name={filterItem.name}
-                          description={filterItem.description}
+                         foodItem={filterItem}
                           options={filterItem.options[0]}
-                          imgSrc={filterItem.img}
+                          
                         />
                       </div>
                     )

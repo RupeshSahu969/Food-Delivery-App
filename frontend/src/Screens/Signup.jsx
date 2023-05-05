@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import Navbar from '../Components/Navbar'
 
 const Signup = () => {
 
@@ -7,6 +8,8 @@ const Signup = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [geolocation, setgeolocation] = useState("")
+
+    let navigate = useNavigate()
 
     const handlesubmit = () => {
         const payload = {
@@ -28,50 +31,44 @@ const Signup = () => {
                 alert("Sucess")
             })
             .then((res) => console.log(res))
-
-
-
+        navigate("/login")
     }
 
 
 
     return (
         <>
-            <div className='container'>
-                <form onSubmit={handlesubmit}>
-                    <div className="mb-3">
-                        <label htmlFor="name" className="form-label">Name</label>
-                        <input type="text" className="form-control" name="name" value={name}
-                            onChange={(e) => setName(e.target.value)}
-                        />
+            <div style={{ backgroundImage: 'url("https://images.pexels.com/photos/1565982/pexels-photo-1565982.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")', backgroundSize: 'cover', height: '100vh' }}>
+                <div>
+                    <Navbar />
+                </div>
 
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-                        <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            name="email" value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-                        <input type="password" className="form-control" id="exampleInputPassword1"
-                            name="password" value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="exampleInputPassword1" className="form-label">Address</label>
-                        <input type="text" className="form-control" id="exampleInputPassword1"
-                            name="geolocation" value={geolocation}
-                            onChange={(e) => setgeolocation(e.target.value)}
-                        />
-                    </div>
-
-                    <button type="submit" className="m-3 btn btn-success">Submit</button>
-                    <Link to="/login" className='m-3 btn btn-danger'>Already a user</Link>
-                </form>
+                <div className='container' >
+                    <form className='w-50 m-auto mt-5 border bg-dark border-success rounded' onSubmit={handlesubmit}>
+                    <h3 className='text-white  text-center'>SignUp</h3>
+                        <div className="m-3">
+                            <label htmlFor="name" className="form-label">Name</label>
+                            <input type="text"  className="form-control" name='name' placeholder='Enter Name' value={name} onChange={(e) => setName(e.target.value)} aria-describedby="emailHelp" />
+                        </div>
+                        <div className="m-3">
+                            <label htmlFor="email" className="form-label">Email address</label>
+                            <input type="email" className="form-control" name='email' placeholder='Enter Email' value={email} onChange={(e) => setEmail(e.target.value)} aria-describedby="emailHelp" />
+                        </div>
+                        <div className="m-3">
+                            <label htmlFor="address" className="form-label">Address</label>
+                            <fieldset>
+                                <input type="email" className="form-control" name='email' placeholder='Enter Address' value={geolocation} onChange={(e) => setgeolocation(e.target.value)} aria-describedby="emailHelp"  />
+                            </fieldset>
+                        </div>
+                        
+                        <div className="m-3">
+                            <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
+                            <input type="password" className="form-control" placeholder='Enter Password' value={password} onChange={(e) => setPassword(e.target.value)} name='password' />
+                        </div>
+                        <button type="submit" className="m-3 btn btn-success">Submit</button>
+                        <Link to="/login" className="m-3 mx-1 btn btn-danger">Already a user</Link>
+                    </form>
+                </div>
             </div>
         </>
     )

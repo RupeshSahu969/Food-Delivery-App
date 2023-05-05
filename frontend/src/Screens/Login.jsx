@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
+import Navbar from '../Components/Navbar';
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -30,8 +31,10 @@ const Login = () => {
       alert("Enter Valid Credenitals")
     }
     if (!json.success) {
+      localStorage.setItem("userEmail",credentials.email)
       localStorage.setItem("authToken",json.authToken)
         console.log(localStorage.getItem("authToken"))
+        console.log(localStorage.getItem("userEmail"))
         navigate("/")
    }
 
@@ -42,32 +45,29 @@ const Login = () => {
   }
 
   return (
+    <div style={{backgroundImage: 'url("https://images.pexels.com/photos/326278/pexels-photo-326278.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")', height: '100vh', backgroundSize: 'cover' }}>
     <div>
-      <div className='container'>
-        <form onSubmit={handlesubmit}>
-
-          <div className="mb-3">
-            <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-            <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-              name="email" value={credentials.email}
-              onChange={onChange}
-            />
-
-          </div>
-          <div className="mb-3">
-            <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-            <input type="password" className="form-control" id="exampleInputPassword1"
-              name="password" value={credentials.password}
-              onChange={onChange}
-            />
-          </div>
-
-
-          <button type="submit" className="m-3 btn btn-success">Submit</button>
-          <Link to="/signup" className='m-3 btn btn-danger'>I am a New user</Link>
-        </form>
-      </div>
+      <Navbar/>
     </div>
+    <div className='container'>
+      
+      <form className='w-50 m-auto mt-5 border bg-dark border-success rounded' onSubmit={handlesubmit}>
+      <h3 className='text-white  text-center'>Login</h3>
+        <div className="m-3">
+          <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
+          <input type="email" className="form-control" name='email' placeholder='Enter Email' value={credentials.email} onChange={onChange} aria-describedby="emailHelp" />
+          
+        </div>
+        <div className="m-3">
+          <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
+          <input type="password" className="form-control" placeholder='Enter Password' value={credentials.password} onChange={onChange} name='password' />
+        </div>
+        <button type="submit" className="m-3 btn btn-success">Submit</button>
+        <Link to="/signup" className="m-3 mx-1 btn btn-danger">New User</Link>
+      </form>
+
+    </div>
+  </div>
   )
 }
 
